@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <title>AyProductions | App Icon Converter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Roboto';
+
+        }
+
+        .c {
+            border: 1px solid rgb(46, 46, 46);
+            width: 30%;
+            height: 100vh;
+            color: black;
+            background-color: white;
+        }
+
+        input[type=file] {
+            color: transparent;
+        }
+
+        .hdr {
+            padding: 10px;
+            background-color: rgb(211, 36, 66);
+            color: white;
+            text-align: left;
+            display: flex;
+            font-size: 20px;
+        }
+
+        .m {
+            padding: 5px;
+        }
+
+        button {
+            background-color: rgb(211, 36, 66);
+            color: white;
+            text-transform:inherit;
+            border-radius: 3px;
+            cursor: pointer;
+            padding: 5px;
+            outline: none;
+            border: none;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: rgb(231, 39, 71);
+        }
+
+        .dlb {
+            margin: 5px 0;
+            display: flex;
+        }
+
+        .dlb button {
+            width: 100%;
+        }
+
+        .br-n {
+            display: block;
+            margin-bottom: 0em;
+        }
+    </style>
+    <script>
+        function browseFile() {
+            document.getElementById("iconFile").click();
+        }
+
+        function fileAccept() {
+            if (document.getElementById("iconFile").value) {
+                document.getElementById("fileName").innerHTML = document.getElementById("iconFile").value;
+            } else {
+                document.getElementById("fileName").innerHTML = "No file chosen"
+            }
+        }
+
+        function showImgPreview() {
+            const [file] = document.getElementById("iconFile").files
+            if (file) {
+                document.getElementById("prev").src = URL.createObjectURL(file)
+            }
+        }
+    </script>
+</head>
+
+<body bgcolor="black" text="white">
+    <center>
+        <div class="c">
+
+
+            <div class="hdr">
+                <span class="material-icons" style="cursor: pointer;">
+                    arrow_back
+                </span>
+                &nbsp;&nbsp;App Icon Converter
+            </div>
+
+            <div class="m">
+                <center>
+                    <input accept="image/*" type="file" name="iconFile" id="iconFile" hidden="hidden"
+                        onchange="fileAccept();showImgPreview();">
+                    <span id="fileName">No file chosen</span><div style="margin: 2px 0;"></div>
+                    <hr color="black">
+                    <div style="margin: 3px 0;"></div>
+                    <button id="filePicker" onclick="browseFile();">Browse an icon</button><br>
+                    <div class="dlb">
+                        <button>Download Small</button>&nbsp;
+                        <button>Download Medium</button>&nbsp;
+                        <button>Download Large</button>
+                    </div><br>
+                    <img src="" id="prev">
+                </center>
+            </div>
+        </div>
+    </center>
+</body>
+
+</html>
